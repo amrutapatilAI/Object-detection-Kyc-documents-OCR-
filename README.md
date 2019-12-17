@@ -48,3 +48,20 @@ exaple of .data file:-
 ```
 Now the main task is wrting you own customised yolov3.cfg file (Note-you can give any name you wish to give)
 In current use case which is detect important text from kyc documents-I had lablled data with only one label text.So my kyc.names file contained only one lable 'text'.
+Now consider follwing part of cfg file.We will understand what it means
+```
+[net]
+# Training
+batch=64
+subdivisions=8
+width=416
+height=416
+channels=3
+momentum=0.9
+decay=0.0005
+````
+ batch=64 indicates ***batch-size*** Training process is basically iterrative process,which iteratively updates weights of a neural network.which is mainly depends on how many mistakes it is making on trainig dataset.
+ eg:- here bath-size is 64 which means 64 images are used in one iteration.
+ But sometimes we don't have enough memory to interate 64 images single time ,to overcome from this darknet has provided us ***subdivisions*** facility  which devides single batch in parts.
+ training dataset images will be resized to the size we have mentioned against ***width & height. channel =3*** indicates that we are procissing coloured images. 
+ ***momentum*** is actully penalizing  parameter to penalize large weight changes during iterations.
