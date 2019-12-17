@@ -101,6 +101,7 @@ Thre is one formula to dicide number of filters we should have -***filters=(clas
 
 
 Now we are all set to start train our own model.what we have to do is to run following command.
+
 ***withoud GPU***
 
 ***./darknet detector train cfg/kyc.data cfg/yolov3.cfg darknet53.conv.74***
