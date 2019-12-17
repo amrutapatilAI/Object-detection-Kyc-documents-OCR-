@@ -9,24 +9,24 @@ We went for YOLO (You Only Look Once )Algorithm.YOLO is extremely fast for real 
 # Training-
 
 So train our model we need to have Darknet installed .You can follow following commands
-##################################################################################################
+```
  
  git clone https://github.com/pjreddie/darknet 
  
  cd darknet
  
  make
-##################################################################################################
+```
 
 You can follow their official website https://pjreddie.com/darknet/yolo/
 # Steps to follow for training.
-1-preparation of training data (Laballing):-
+## 1-preparation of training data (Laballing):-
 
    
    We have to prepare out training data.What we do is laballing.We have to specifiy in exatctly which ara of image we are looking for.There are multiple tools available for image labelling.but I went for microsofts visual object tagging tool (VOTT).
 you can follow their official github link https://github.com/microsoft/VoTT 
 
-2-Training yolo on VOC data(VOTT gives you option in which format you want to save your lablled data eg:-JSON,pascal VOC):-
+## 2-Training yolo on VOC data(VOTT gives you option in which format you want to save your lablled data eg:-JSON,pascal VOC):-
 
    For tarining your yolo model on darknet you need to take care of some of mandetory files.We are going to train our model by using allready trained model on imagenet we call it as TRANSFER LERANING. We will use convolutional weights from darknet53 model.
    
@@ -35,4 +35,16 @@ you can follow their official github link https://github.com/microsoft/VoTT
    When you will install darknet you will have some folders like cfg,backup,data.
    
    cfg folder contains all yolo configuration files with .cfg extention.also files with .data extention which contains information like path of your train.txt file also path of lable.names file. 
-exaple of .cfg file:-
+exaple of .data file:-
+
+```
+  1 classes= 2 #number of classes 
+  2 train  = <path-to>/train.txt
+  3 valid  = <path-to->/est.txt
+  4 names = data/labels.names
+  5 backup = backup #path where to save weights of model
+  
+  #NOTE-it's not necessary you have save your weights in backup folder only
+```
+Now the main task is wrting you own customised yolov3.cfg file (Note-you can give any name you wish to give)
+In current use case which is detect important text from kyc documents-I had lablled data with only one label text.So my kyc.names file contained only one lable 'text'.
